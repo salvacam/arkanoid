@@ -6,7 +6,7 @@
 #ifdef __APPLE__
 #include <SDL/SDL.h>
 #else
-#include <SDL.h>
+#include <SDL/SDL.h>
 #endif
 
 // Arkanoid Like.

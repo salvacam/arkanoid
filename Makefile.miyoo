@@ -1,0 +1,30 @@
+# Mon Makefile
+#PATH = /usr/include/SDL
+TARGET = Arkanoid
+OBJECTS = src/main.o src/anims.o src/sprites.o src/dust.o src/frame.o src/mst.o src/animspr.o src/fire.o src/menu.o src/preca.o src/breaker.o src/font.o src/monsters.o src/snd.o
+
+
+CHAINPREFIX=/opt/miyoo
+CROSS_COMPILE=$(CHAINPREFIX)/usr/bin/arm-linux-
+
+CC = $(CROSS_COMPILE)gcc
+
+SYSROOT := $(shell $(CC) --print-sysroot)
+SDL_CONFIG = $(SYSROOT)/usr/bin/sdl-config
+SDL_CFLAGS := $(shell $(SYSROOT)/usr/bin/sdl-config --cflags)
+SDL_LIBS := $(shell $(SYSROOT)/usr/bin/sdl-config --libs)
+
+DEFAULT_CFLAGS = $(shell $(SDL_CONFIG) --cflags) 
+
+CFLAGS = -O2 -Wall -g -I/opt/miyoo/usr/include/SDL -L/opt/miyoo/lib 
+LIBS = -s -L$(SYSROOT)/usr/lib -lSDL -lSDL_image -lSDL_mixer
+
+
+all: $(TARGET)
+
+clean:
+	rm src/*.o
+
+$(TARGET): $(OBJECTS)
+	$(CC) $(CFLAGS) -o $@ $^ $(LIBS) 
+

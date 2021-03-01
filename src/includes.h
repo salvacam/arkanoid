@@ -2,7 +2,7 @@
 // Includes.
 #include <stdlib.h>
 #include <unistd.h>
-#include "SDL.h"
+#include "SDL/SDL.h"
 //#include "SDL_image.h"
 #include <math.h>
 #include <time.h>
@@ -22,8 +22,8 @@
 #include "monsters.h"
 #include "font.h"
 #include "menu.h"
-#include "SDL_mixer.h"
-#include "SDL_sound.h"
+#include "SDL/SDL_mixer.h"
+#include "SDL/SDL_sound.h"
 
 #include "snd.h"
 
